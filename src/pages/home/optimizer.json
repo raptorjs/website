@@ -1,0 +1,8 @@
+{
+    "dependencies": [
+        "src/global-style/optimizer.json",
+        "src/components/app-navbar/optimizer.json",
+        "src/components/app-footer/optimizer.json",
+        "style.css"
+    ]
+}

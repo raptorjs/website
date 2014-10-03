@@ -1,0 +1,108 @@
+<optimizer-page package-path="./optimizer.json"/>
+
+<def function="module(id, title, url, body)" body-param="body">
+    <div class="tile" id="$id">
+        <h3><a href="$url">$title</a></h3>
+        <div class="tile-body">
+            ${body}
+        </div>
+        <div class="button-bar">
+            <a href="$url" class="tile-button">
+                Learn More on Github
+            </a>
+        </div>
+    </div>
+</def>
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            RaptorJS
+        </title>
+
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta itemprop="description" name="Description" content="A Suite of Front-end Power Tools">
+
+        <optimizer-head/>
+    </head>
+    <body>
+        <header>
+            <app-navbar/>
+
+            <div class="container">
+
+
+                <div class="hero">
+                    <div class="logo">
+                        <optimizer-img src="./raptorjs-logo.png" alt="RaptorJS Logo"/>
+                    </div>
+
+                    <h2>
+                        A Suite of Front-end Power Tools
+                    </h2>
+                </div>
+            </div>
+        </header>
+
+        <main id="main">
+            <div class="container">
+                <div class="tiles">
+                    <invoke function="module"
+                        id="optimizerTile"
+                        url="https://github.com/raptorjs/optimizer"
+                        title="Optimizer">
+
+                        The RaptorJS Optimizer is a Node.js-style module bundler
+                        that also provides first-level support for optimally delivering
+                        JavaScript, CSS, images and other assets to the browser.
+
+                        <p>
+                            Supported optimizations:
+                        </p>
+                        <ul>
+                            <li>Bundling</li>
+                            <li>Code splitting</li>
+                            <li>Lazy loading</li>
+                            <li>Compression</li>
+                            <li>Fingerprinted URLs</li>
+                            <li>...and more!</li>
+                        </ul>
+                    </invoke>
+
+                    <invoke function="module"
+                        id="markoTile"
+                        url="https://github.com/raptorjs/marko"
+                        title="Marko">
+                        Marko is an extensible, streaming, asynchronous, high performance,
+                        <i>HTML-based</i> templating language that can be used in Node.js or in the
+                        browser.
+                    </invoke>
+
+                    <invoke function="module"
+                        id="markoWidgetsTile"
+                        url="https://github.com/raptorjs/marko-widgets"
+                        title="Marko Widgets">
+                        Marko Widgets provides a simple and efficient
+                        mechanism for binding behavior to UI components rendered
+                        on either the server or in the browser.
+                    </invoke>
+                </div>
+                <p class="legacy">
+                    If you are looking for the old documentation, please visit <a href="http://raptorjs-legacy.github.io/">RaptorJS Legacy</a>.
+                </p>
+
+            </div>
+        </main>
+
+        <app-footer/>
+
+        <optimizer-body/>
+
+        <w-init-widgets/>
+
+        <browser-refresh enabled="true"/>
+    </body>
+</html>

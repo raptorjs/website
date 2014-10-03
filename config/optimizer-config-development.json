@@ -1,0 +1,9 @@
+{
+    "fileWriter": {
+        "fingerprintsEnabled": false
+    },
+    "minify": false,
+    "bundlingEnabled": false,
+    "enabledExtensions": ["raptor-logging/browser", "development"],
+    "cacheProfile": "development"
+}

@@ -1,0 +1,7 @@
+{
+    "fileWriter": {
+        "fingerprintsEnabled": true,
+        "urlPrefix": "/static"
+    },
+    "minify": true
+}
