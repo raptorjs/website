@@ -1,0 +1,9 @@
+{
+    "dependencies": [
+        {
+            "path": "client.js",
+            "inline": true,
+            "slot": "head"
+        }
+    ]
+}
