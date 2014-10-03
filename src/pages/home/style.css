@@ -183,3 +183,39 @@ header {
         margin-right: 10px;
     }
 }
+
+@media (max-width: 768px){
+    .container {
+        width: auto;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    header {
+        padding-top: 0px;
+    }
+
+    .navbar {
+        position: static;
+    }
+
+    #optimizerTile, #markoTile, #markoWidgetsTile {
+        width: auto;
+        height: auto;
+        position: static;
+        right: auto;
+        bottom: auto;
+        left: auto;
+        margin-bottom: 1.5em;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 540px) {
+
+    #raptorJSLogo {
+        width: 265px;
+        height: 184px;
+    }
+}
