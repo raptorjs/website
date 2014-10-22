@@ -4,7 +4,6 @@
         "style.css",
         "require-run: codemirror/mode/javascript/javascript",
         "require-run: codemirror/mode/htmlmixed/htmlmixed",
-        "require: codemirror/theme/monokai.css",
         "src/components/app-codemirror/optimizer.json",
         "src/components/app-marko-try-online-errors/optimizer.json"
     ]

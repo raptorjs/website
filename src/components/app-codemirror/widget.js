@@ -7,6 +7,7 @@ function Widget(widgetConfig) {
 
     this.mode = widgetConfig.mode;
 
+
     var codeMirrorConfig = {
         value: widgetConfig.code || '',
         mode: widgetConfig.mode,

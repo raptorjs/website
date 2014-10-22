@@ -37,7 +37,7 @@
 
                 <app-codemirror mode="htmlmixed"
                     auto-resize="true"
-                    theme="monokai"
+                    theme="${data.theme}"
                     w-id="templateEditor"/>
 
                 <app-marko-try-online-errors w-id="templateErrors"/>
@@ -48,7 +48,7 @@
             <div class="mto-tile mto-tile-mto-data">
                 <h2>Data</h2>
                 <app-codemirror mode="javascript"
-                    theme="monokai"
+                    theme="${data.theme}"
                     auto-resize="true"
                     w-id="dataEditor"/>
 
@@ -64,7 +64,7 @@
                     auto-resize="true"
                     read-only="true"
                     auto-format="true"
-                    theme="monokai"
+                    theme="${data.theme}"
                     w-id="outputEditor" />
 
                 <div w-el-id="htmlViewer" class="mto-html-viewer"></div>
@@ -76,7 +76,7 @@
                 <app-codemirror mode="javascript"
                     auto-resize="true"
                     read-only="true"
-                    theme="monokai"
+                    theme="${data.theme}"
                     w-id="compiledEditor"/>
             </div>
         </div>
