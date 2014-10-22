@@ -1,0 +1,12 @@
+{
+    "tags": {
+        "test-button": {
+            "renderer": "./button-renderer.js",
+            "attributes": {
+                "label": "string",
+                "color": "string",
+                "disabled": "boolean"
+            }
+        }
+    }
+}

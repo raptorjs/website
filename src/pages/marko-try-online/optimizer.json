@@ -1,9 +1,10 @@
 {
     "dependencies": [
-        "style.css",
         "require: jquery",
         "require: marko-widgets",
         "src/global-style/optimizer.json",
-        "src/components/app-marko-try-online/optimizer.json"
+        "src/components/app-navbar/optimizer.json",
+        "src/components/app-marko-try-online/optimizer.json",
+        "style.css"
     ]
 }

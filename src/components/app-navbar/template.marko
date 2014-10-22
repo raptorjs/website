@@ -1,6 +1,25 @@
 <div class="navbar">
-    <div class="container">
-        <a href="/" class="brand">RaptorJS</a>
+    <div class="{?data.fullWidth;container-full-width;container}">
+        <a href="/" class="brand">{?data.title;${data.title};RaptorJS}</a>
+        <span class="navbar-sub1" if="data.sub1Title">
+            &nbsp;&raquo;
+            <a href="$data.sub1Link" if="data.sub1Link">
+                $data.sub1Title
+            </a>
+            <span else>
+                $data.sub1Title
+            </span>
+        </span>
+
+        <span class="navbar-sub2" if="data.sub2Title">
+            &nbsp;&raquo;
+            <a href="$data.sub2Link" if="data.sub2Link">
+                $data.sub2Title
+            </a>
+            <span else>
+                $data.sub2Title
+            </span>
+        </span>
 
         <div class="ebay-container">
             <optimizer-img src="./ebay-open-source-white.png"

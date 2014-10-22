@@ -8,7 +8,7 @@
     [ "Macros", [ "Simple Macro", "Nested Content" ] ],
     [ "Attributes", [ "Conditional Attributes", "Attributes from Object", "Nested Attributes" ] ],
     [ "Variables", [ "Simple", "With" ] ],
-    [ "Helpers", [ "Require" ] ],
+    [ "Helpers", [ "Simple", "Require" ] ],
     [ "Whitespace", [ "Simple" ] ],
     [ "Taglibs", [ "Simple" ] ]
 ]

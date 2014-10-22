@@ -5,6 +5,8 @@
         "require-run: codemirror/mode/javascript/javascript",
         "require-run: codemirror/mode/htmlmixed/htmlmixed",
         "src/components/app-codemirror/optimizer.json",
-        "src/components/app-marko-try-online-errors/optimizer.json"
+        "src/components/app-marko-try-online-errors/optimizer.json",
+        "require: change-case",
+        "./test-taglib/optimizer.json"
     ]
 }

@@ -110,6 +110,10 @@
 
 }
 
+.mto-tile-mto-options {
+    display: none;
+}
+
 .mto-tile-output {
     margin-bottom: 15px;
 }
@@ -118,9 +122,19 @@
 
 }
 
+
 .mto-html-viewer {
     border: 1px solid #c0c0c0;
     padding: 3px;
     margin-top: 5px;
     background-color: #f7f7f7;
+}
+
+.raptorjs-logo-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.raptorjs-logo {
+
 }

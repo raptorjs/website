@@ -1,11 +1,15 @@
 var fs = require('fs');
 var nodePath = require('path');
 
-function Sample(name, template, data) {
+function Sample(name, template, data, options, sampleConfig) {
+    sampleConfig = sampleConfig || {};
+
     this.id = null;
     this.name = name;
     this.template = template;
     this.data = data;
+    this.options = options;
+    this.autoFormat = sampleConfig.autoFormat !== false;
 }
 
 function Category(name) {
@@ -111,8 +115,14 @@ exports.load = function() {
 
             var dataPath = nodePath.join(sampleDir, 'data.js');
             var templatePath = nodePath.join(sampleDir, 'template.marko');
+            var optionsPath = nodePath.join(sampleDir, 'options.js');
+            var sampleConfigPath = nodePath.join(sampleDir, 'sample.json');
 
             var data;
+            var options;
+            var sampleConfig;
+            var sampleConfigJSON;
+
             var template = fs.readFileSync(templatePath, 'utf8');
 
             try {
@@ -121,7 +131,23 @@ exports.load = function() {
                 data = '{\n}';
             }
 
-            var sample = new Sample(sampleName, template, data);
+            try {
+                options = fs.readFileSync(optionsPath, 'utf8');
+            } catch(e) {
+                options = null;
+            }
+
+            try {
+                sampleConfigJSON = fs.readFileSync(sampleConfigPath, 'utf8');
+            } catch(e) {
+                sampleConfigJSON = null;
+            }
+
+            if (sampleConfigJSON) {
+                sampleConfig = JSON.parse(sampleConfigJSON);
+            }
+
+            var sample = new Sample(sampleName, template, data, options, sampleConfig);
             category.addSample(sample);
         });
     });

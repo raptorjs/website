@@ -1,0 +1,10 @@
+{
+    "attributes": {
+        "title": "string",
+        "sub1Title": "string",
+        "sub1Link": "string",
+        "sub2Title": "string",
+        "sub2Link": "string",
+        "full-width": "boolean"
+    }
+}

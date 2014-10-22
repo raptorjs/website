@@ -29,6 +29,9 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#61b0df', endC
     text-decoration: none;
 }
 
+.navbar, .navbar A {
+    color: #fbaf31;
+}
 .navbar A.brand {
     color: #fbaf31;
     /* text-shadow: 0 2px 0 rgba(0,0,0,0.5);
@@ -49,4 +52,14 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#61b0df', endC
 
 .navbar .ebay-logo {
     vertical-align: middle;
+}
+
+.navbar-subtitle {
+
+}
+
+.navbar .container-full-width {
+    margin-left: 10px;
+    margin-right: 10px;
+    position: relative;
 }

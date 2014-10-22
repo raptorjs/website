@@ -8,6 +8,12 @@
             $category.name
 
         </button>
+
+        <div class="raptorjs-logo-container">
+            <a href="/">
+                <optimizer-img src="./raptorjs-logo-small.png" class="raptorjs-logo"/>
+            </a>
+        </div>
     </div>
     <div class="mto-tiles">
         <div class="mto-col-input">
@@ -53,6 +59,17 @@
                     w-id="dataEditor"/>
 
                 <app-marko-try-online-errors w-id="dataErrors"/>
+            </div>
+
+            <!-- Options -->
+            <div class="mto-tile mto-tile-mto-options" w-el-id="optionsContainer">
+                <h2>Options</h2>
+                <app-codemirror mode="javascript"
+                    theme="${data.theme}"
+                    auto-resize="true"
+                    w-id="optionsEditor"/>
+
+                <app-marko-try-online-errors w-id="optionsErrors"/>
             </div>
         </div>
         <div class="mto-col-output">

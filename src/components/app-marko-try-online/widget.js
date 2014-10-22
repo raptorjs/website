@@ -1,6 +1,8 @@
 var compiler = require('marko/compiler');
 var marko = require('marko');
 
+compiler.taglibs.registerTaglib(require.resolve('./test-taglib/marko-taglib.json'));
+
 window.testTemplate = marko.load(require.resolve('./include-target.marko'));
 
 function getUniqueSampleName(category, sample) {
@@ -16,6 +18,7 @@ function Widget(widgetConfig) {
     var autoRender = true;
     var compileRequired = true;
     var renderRequired = true;
+    var currentSample = null;
 
     var editorsState = {
         data: null,
@@ -35,6 +38,7 @@ function Widget(widgetConfig) {
     var samplesByName = {};
 
     var templateCreateFunc;
+    var changeHash = true;
 
     var $htmlViewer = this.$("#htmlViewer");
 
@@ -48,7 +52,6 @@ function Widget(widgetConfig) {
             samplesByName[sample.uniqueName] = sample;
         });
     });
-
 
     this.$().on('click', '.mto-category-btn', function() {
         var categoryId = this.getAttribute('data-cat-id');
@@ -88,6 +91,16 @@ function Widget(widgetConfig) {
         }
     });
 
+    widgets.optionsEditor.on('change', function() {
+        editorsState.optionsModified = true;
+        renderRequired = true;
+        compileRequired = true;
+
+        if (autoRender) {
+            _this.update();
+        }
+    });
+
     // widgets.optionsEditor.on('change', function() {
     //     editorsState.optionsModified = true;
     //     compileRequired = true;
@@ -117,6 +130,8 @@ function Widget(widgetConfig) {
         if (!sample) {
             return;
         }
+
+        currentSample = sample;
 
         var categoryId = sample.category.id;
 
@@ -156,26 +171,40 @@ function Widget(widgetConfig) {
 
         this.$('.mto-sample-btn[data-sample-id="' + currentSampleId + '"]').addClass('mto-btn-active');
 
+        if (sample.options) {
+            this.$('#optionsContainer').show();
+        } else {
+            this.$('#optionsContainer').hide();
+        }
+
+
         var template = sample.template;
         var data = sample.data;
+        var options = sample.options;
+        var autoFormat = sample.autoFormat === true;
+
+        widgets.outputEditor.setAutoFormat(autoFormat);
 
         halt = true;
 
         widgets.dataEditor.setValue(data || '{\n}');
+
+        if (options) {
+            widgets.optionsEditor.setValue(options);
+        }
+
         widgets.templateEditor.setValue(template);
 
         halt = false;
 
         this.update();
 
-        document.location.hash = sample.uniqueName;
+        if (changeHash !== false) {
+            document.location.hash = sample.uniqueName;
+        }
     };
 
     this.handleEditorException = function(errorsWidget, e) {
-        if (window.console) {
-            console.error(e);
-        }
-
         var errors = e.errors;
 
         if (!errors) {
@@ -185,9 +214,9 @@ function Widget(widgetConfig) {
         errorsWidget.addErrors(errors);
     };
 
-    function compileAndLoadTemplate(templateSrc, path, callback) {
+    function compileAndLoadTemplate(templateSrc, path, compileOptions, callback) {
         try {
-            compiler.compile(templateSrc, path, null, function(err, compiledSrc) {
+            compiler.compile(templateSrc, path, compileOptions, function(err, compiledSrc) {
                 if (err) {
                     return callback(err);
                 }
@@ -219,13 +248,19 @@ function Widget(widgetConfig) {
             return;
         }
 
+        widgets.templateErrors.clearErrors();
 
         var templateSrc = widgets.templateEditor.getValue();
         var pseudoPath = '/template.marko';
 
+        var compileOptions = currentSample.options ?
+            editorsState.optionsData :
+            null;
+
         compileAndLoadTemplate(
             templateSrc,
             pseudoPath,
+            compileOptions,
             function(err, _templateCreateFunc, compiledSrc) {
                 if (err) {
                     _this.handleEditorException(widgets.templateErrors, err);
@@ -247,22 +282,27 @@ function Widget(widgetConfig) {
         var template = marko.load(templateCreateFunc);
         var viewModel = editorsState.templateData;
 
-        template.render(viewModel, function(err, html) {
-            if (err) {
-                widgets.outputEditor.setValue(err.toString());
-                this.handleEditorException(widgets.templateErrors, err);
-                $htmlViewer.html('');
-                return;
-            }
+        try {
+            template.render(viewModel, function(err, html) {
+                if (err) {
+                    this.handleEditorException(widgets.templateErrors, err);
+                    $htmlViewer.html('');
+                    return;
+                }
 
-            widgets.outputEditor.setValue(html);
-            $htmlViewer.html(html);
-        });
+                widgets.outputEditor.setValue(html);
+                $htmlViewer.html(html);
+            });
+        } catch(err) {
+            this.handleEditorException(widgets.templateErrors, err);
+            $htmlViewer.html('');
+        }
+
 
         this.renderRequired = false;
     };
 
-    this.updateJson = function(targetProp, modifiedProp, editor, errors) {
+    this.updateJSON = function(targetProp, modifiedProp, editor, errors) {
         if (!editorsState[modifiedProp]) {
             return;
         }
@@ -293,14 +333,14 @@ function Widget(widgetConfig) {
             return;
         }
 
-        // this.updateJson('compilerOptions', 'optionsModified', widgets.optionsEditor, widgets.optionsErrors);
+        this.updateJSON('optionsData', 'optionsModified', widgets.optionsEditor, widgets.optionsErrors);
         this.compileTemplate();
-        this.updateJson('templateData', 'dataModified', widgets.dataEditor, widgets.dataErrors);
+        this.updateJSON('templateData', 'dataModified', widgets.dataEditor, widgets.dataErrors);
+
         this.renderTemplate();
     };
 
     if (document.location.hash) {
-
         var sample = samplesByName[document.location.hash.substring(1)];
         if (sample) {
             this.showSample(sample.id);
@@ -308,7 +348,9 @@ function Widget(widgetConfig) {
             this.showCategory(samples.categories[0].id);
         }
     } else {
+        changeHash = false;
         this.showCategory(samples.categories[0].id);
+        changeHash = true;
     }
 
 
