@@ -3,5 +3,8 @@
         "fingerprintsEnabled": true,
         "urlPrefix": "/static"
     },
-    "minify": true
+    "minify": true,
+    "plugins": [
+        "optimizer-marko"
+    ]
 }

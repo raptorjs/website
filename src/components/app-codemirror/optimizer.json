@@ -1,0 +1,7 @@
+{
+    "dependencies": [
+        "require: codemirror/lib/codemirror.css",
+        "require: ./widget",
+        "style.css"
+    ]
+}

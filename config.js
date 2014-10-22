@@ -25,7 +25,7 @@ var commandLineArgs = require('raptor-args')
         },
         '--development --dev -d': {
             type: 'boolean',
-            description: 'Output directory for static builds'
+            description: 'Use development environment settings'
         },
         '--out-dir --out -o': {
             type: 'boolean',

@@ -1,0 +1,10 @@
+{
+    "attributes": {
+        "mode": "string",
+        "auto-resize": "boolean",
+        "code": "string",
+        "read-only": "boolean",
+        "auto-format": "boolean",
+        "theme": "string"
+    }
+}
