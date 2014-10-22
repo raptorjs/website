@@ -6,5 +6,18 @@
     "minify": true,
     "plugins": [
         "optimizer-marko"
+    ],
+    "bundles": [
+        {
+            "name": "common",
+            "dependencies": [
+                {
+                    "intersection": [
+                        "./src/pages/home/optimizer.json",
+                        "./src/pages/marko-try-online/optimizer.json"
+                    ]
+                }
+            ]
+        }
     ]
 }
