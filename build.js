@@ -23,6 +23,7 @@ require('./config').onConfigured(function(err, config) {
         return function(callback) {
             var outDir = nodePath.join(baseDir, path);
             var outFile = nodePath.join(outDir, 'index.html');
+
             mkdirp(outDir, function() {
                 var out = fs.createWriteStream(outFile);
                 console.log('Rendering route "' + path + '" to "' + nodePath.relative(process.cwd(), outFile) + '"...');
@@ -33,6 +34,7 @@ require('./config').onConfigured(function(err, config) {
                     })
                     .on('close', function() {
                         console.log('Completed rendering route "' + path + '"');
+                        callback();
                     });
 
                 handler({}, out);
@@ -40,12 +42,13 @@ require('./config').onConfigured(function(err, config) {
         };
     });
 
+
     series(renderTasks, function(err) {
         if (err) {
             console.error('Error: ', err);
             return;
         }
 
-        console.log('Website successful generated to "' + outDir + '"!');
+        console.log('Website successful generated to "' + baseDir + '"!');
     });
 });
