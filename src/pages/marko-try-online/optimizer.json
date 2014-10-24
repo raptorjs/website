@@ -5,6 +5,7 @@
         "src/global-style/optimizer.json",
         "src/components/app-navbar/optimizer.json",
         "src/components/app-marko-try-online/optimizer.json",
+        "src/components/app-google-analytics/optimizer.json",
         "style.css"
     ]
 }
