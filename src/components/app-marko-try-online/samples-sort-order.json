@@ -4,6 +4,7 @@
     [ "Conditionals", [ "If", "If...Else-If...Else", "Shorthand Conditionals" ] ],
     [ "Text Replacement", [ "Simple", "Escaping" ] ],
     [ "Expressions", [ "Simple" ] ],
+    [ "Async", [ "Async Fragment", "beginAsync" ] ],
     [ "Includes", [ "Simple" ] ],
     [ "Macros", [ "Simple Macro", "Nested Content" ] ],
     [ "Attributes", [ "Conditional Attributes", "Attributes from Object", "Nested Attributes" ] ],
