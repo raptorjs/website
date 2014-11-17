@@ -4,6 +4,8 @@ var marko = require('marko');
 compiler.taglibs.registerTaglib(require.resolve('./test-taglib/marko-taglib.json'));
 
 window.testTemplate = marko.load(require.resolve('./include-target.marko'));
+window.layoutTemplate = marko.load(require.resolve('./layout-use-target.marko'));
+
 
 function getUniqueSampleName(category, sample) {
     var catName = category.name;
