@@ -335,6 +335,10 @@ function Widget(widgetConfig) {
             return;
         }
 
+        if (editorsState.dataModified) {
+            widgets.templateErrors.clearErrors();
+        }
+
         this.updateJSON('optionsData', 'optionsModified', widgets.optionsEditor, widgets.optionsErrors);
         this.compileTemplate();
         this.updateJSON('templateData', 'dataModified', widgets.dataEditor, widgets.dataErrors);
