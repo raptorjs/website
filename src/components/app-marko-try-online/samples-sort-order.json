@@ -7,7 +7,7 @@
     [ "Async", [ "Async Fragment", "beginAsync" ] ],
     [ "Includes", [ "Simple" ] ],
     [ "Macros", [ "Simple Macro", "Nested Content" ] ],
-    [ "Attributes", [ "Conditional Attributes", "Attributes from Object", "Nested Attributes" ] ],
+    [ "Attributes", [ "Conditional", "Boolean", "From Object", "Nested" ] ],
     [ "Variables", [ "Simple", "With" ] ],
     [ "Helpers", [ "Simple", "Require" ] ],
     [ "Whitespace", [ "Simple" ] ],
