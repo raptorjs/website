@@ -8,8 +8,9 @@ module.exports = function(input, out) {
     }
 
     var viewModel = {
-        label: input.label || 'My Button',
+        label: input.label,
         attrs: attrs,
+        renderBody: input.renderBody,
         disabled: input.disabled === true
     };
 

@@ -1,3 +1,8 @@
 <button type="button" attrs="data.attrs" disabled="${data.disabled}">
-    $data.label
+    <if test="data.label">
+        $data.label
+    </if>
+    <else-if test="data.renderBody">
+        <invoke function="data.renderBody(out)"/>
+    </else-if>
 </button>

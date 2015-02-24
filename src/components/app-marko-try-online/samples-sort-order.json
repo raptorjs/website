@@ -11,5 +11,5 @@
     [ "Variables", [ "Simple", "With" ] ],
     [ "Helpers", [ "Simple", "Require" ] ],
     [ "Whitespace", [ "Simple" ] ],
-    [ "Taglibs", [ "Simple" ] ]
+    [ "Taglibs", [ "Simple", "Nested" ] ]
 ]
